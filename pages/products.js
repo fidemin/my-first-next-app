@@ -1,23 +1,21 @@
+import Product from 'models/products'
+
 export async function getStaticProps() {
     return {
         props: {
-            products: [
-                {id: 1, name: 'product 1'},
-                {id: 2, name: 'product 2'}
-            ]
-
+            products: await Product.fetchProducts()
         }
     }
 }
 
 
-export default function Products({ products }) {
+export default function ProductsPage({ products }) {
     return (
       <>
         <h1>Products</h1> 
         <ul>
           {products.map((product) => (
-            <li key={product.id}>{product.name}</li>
+            <li key={product.id}><a href={"/products/" + product.id}>{product.name}</a></li>
           ))}
         </ul>
       </>
