@@ -6,10 +6,12 @@ const products = [
 
 export default class Product {
     static async fetchProducts() {
+        console.log("fetchProducts called")
         return products 
     }
 
     static async fetchProduct(id) {
+        console.log("fetchProduct(id) called: ", id)
         return products[id-1] 
     }
 }
